@@ -1,19 +1,22 @@
 import socket
 
+# Main function
 def Main():
-    host = '127.0.0.1'
-    port = 5000
+    host = '127.0.0.1' #Server Address
+    port = 5000 #Server port
 
-    s = socket.socket()
-    s.bind((host, port))
+    s = socket.socket() #Creating a socket for instanciate a communication
+    s.bind((host, port)) #Bring the host and port into a process
 
-    s.listen(1)
+    s.listen(1) #Calling the listen function
 
-    c, addr = s.accept()
+    c, addr = s.accept() #Calling the accepting communication from
+                         # other client's requests
 
-    print("Coonecction from : " + str(addr))
+    print("Connection from : " + str(addr))
 
     while True:
+        # Recevie data from
         data = c.recv(1024)
         if not data:
             break
